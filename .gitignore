@@ -1,0 +1,10 @@
+result*/
+preprocess*/
+data*/
+models*/
+*.npy
+*.tar
+*.pth
+*.pyc
+__pycache__/
+*/__pycache__/
