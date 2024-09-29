@@ -365,7 +365,7 @@ def score2seg(xyz,score,superpoint,part_names,save_dir,visualize=True, dir_name=
             save_colored_pc(f"{save_dir}/{dir_name}/{part_names[j]}.ply", xyz, rgb_sem)
         
         # print("semseg min, max :", sem_seg.min(), sem_seg.max())
-        rgb_sem = cmap(sem_seg/n_category)[:,:3]
+        rgb_sem = cmap((sem_seg+1)/n_category)[:,:3]
         save_colored_pc(f"{save_dir}/{dir_name}/all.ply", xyz, rgb_sem)
 
     return sem_seg, sp_sem_seg

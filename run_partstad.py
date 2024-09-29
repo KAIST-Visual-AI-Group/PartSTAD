@@ -39,7 +39,7 @@ parser.add_argument('--train_preprocess_dir', default='preprocess/train', type=s
 parser.add_argument('--test_preprocess_dir', default='preprocess/test', type=str) #test preprocess data dir
 
 parser.add_argument('--save_dir', default='result_training')
-
+parser.add_argument('--eval_save_dir', default='')
 
 # Dataset options
 parser.add_argument('--max_data_per_category',default=999, type=int)
@@ -109,9 +109,6 @@ random.seed(seed)
 
 
 all_categories = ["Bottle","Box","Bucket","Camera","Cart","Clock","CoffeeMachine","Dishwasher","Dispenser","Display","Door","Eyeglasses","Faucet","FoldingChair","Globe","Keyboard","KitchenPot","Knife","Laptop","Lighter","Microwave","Mouse","Oven","Pen","Phone","Pliers","Printer","Remote","Safe","Scissors","Stapler","StorageFurniture","Switch","Table","Toaster","Toilet","TrashCan","USB","WashingMachine","Window","Chair","Kettle","Lamp","Refrigerator","Suitcase"]
-
-
-print(len(all_categories))
 
 # Positional Encoding Code from NeRF pytorch
 class Embedder:
@@ -183,13 +180,14 @@ class PartSTAD():
         self.train_dir = args.train_dir
         self.test_dir = args.test_dir
         self.save_dir = args.save_dir
+        self.eval_save_dir = args.eval_save_dir
 
         self.pre_dir = f"{args.train_preprocess_dir}/rendered_pc"
-        self.glip_dir = f"{args.train_preprocess_dir}/glip_pred"
+        self.glip_dir = f"{args.train_preprocess_dir}/glip_preprocess"
         self.info_pre_dir = f"{args.train_preprocess_dir}/bbox_info_preprocess"
 
         self.test_pre_dir = f"{args.test_preprocess_dir}/rendered_pc"
-        self.test_glip_dir = f"{args.test_preprocess_dir}/glip_pred"
+        self.test_glip_dir = f"{args.test_preprocess_dir}/glip_preprocess"
         self.test_info_pre_dir = f"{args.test_preprocess_dir}/bbox_info_preprocess"
 
         self.test_intv = args.test_intv
@@ -621,7 +619,11 @@ class PartSTAD():
                 ckpt_fname = 'best'
             else:
                 ckpt_fname = ckpt_dir.split("/")[-1][:-4]
-            self.save_dir = "/".join(ckpt_dir.split("/")[:-1]) + f"/eval_{ckpt_fname}/{category}"
+            
+            if len(self.eval_save_dir) == 0: # 
+                self.save_dir = "/".join(ckpt_dir.split("/")[:-1]) + f"/eval_{ckpt_fname}/{category}"
+            else:
+                self.save_dir = f"{self.eval_save_dir}/{category}"
             os.makedirs(self.save_dir, exist_ok=True)
         except:
             raise Exception(f"For evaluation, ckpt, category should not be None.")

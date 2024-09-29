@@ -60,11 +60,15 @@ make
 ```
 
 # Run Quick-Demo
-You can easily run the Part Segmentation demo using the command below. The demo performs inference on preprocessed data located in the `demo_examples/` folder.
+You can easily run the Part Segmentation demo using the command below. The demo performs inference on preprocessed data located in the `demo_examples/` folder. You can easily prepare the demo data by unzipping `demo_examples.tar.xz`.
 
 ```
 python run_demo.py
 ```
+> :bulb: **To execute demo, a finetuned GLIP checkpoint corresponding to the class category is required (Chair, Eyeglasses, Kettle, and Stapler). It can be downloaded from [here](https://huggingface.co/datasets/minghua/PartSLIP/tree/main/models). Please download checkpoints to `models/`. Also SAM checkpoint is required, please download it from [here](https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth)**
+
+After run `run_demo.py`, you can get the segmentation result in `demo_results/visualization` as an `.gif` format like below.
+![poster](./figure/Chair_40067.gif)
 
 # 3D Point Cloud Part Segmentation with PartSTAD
 To train and evaluate PartSTAD, data preprocessing is required first. If preprocessed data exists, you can skip the **Data Preparation** and **Data Preprocessing** steps and move directly to the **Training** and **Evaluation** steps.
@@ -77,7 +81,7 @@ You can download the PartNet-Mobility (PartNet-Ensembled) dataset used in the pa
 Data preprocessing can be performed using the command below. `--category` specifies the class category, `--data_dir` is the directory of the PartNet-Mobility dataset downloaded in the **Data Preparation** step, and `--save_dir` is the directory where the preprocessed data will be saved. 
 
 
-> :bulb: **To execute data preprocessing, a finetuned GLIP checkpoint corresponding to the class category is required. It can be downloaded from [here](https://huggingface.co/datasets/minghua/PartSLIP/tree/main/models). Please download checkpoints to `models/`.**
+> :bulb: **To execute data preprocessing, a finetuned GLIP checkpoint corresponding to the class category is required. It can be downloaded from [here](https://huggingface.co/datasets/minghua/PartSLIP/tree/main/models). Please download checkpoints to `models/`. Also SAM checkpoint is required, so please download it from [here](https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth)**
 
 ```
 python preprocess.py \

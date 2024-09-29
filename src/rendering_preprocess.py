@@ -30,8 +30,6 @@ all_categories = [
     "USB","WashingMachine","Window","Kettle","Lamp",
     "Refrigerator","Suitcase","StorageFurniture","Table","Chair"]
 
-print(f"Num Categories: {len(all_categories)}")
-
 def load_img(file_name):
     pil_image = Image.open(file_name).convert("RGB")
     # convert to BGR format

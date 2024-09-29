@@ -19,8 +19,6 @@ import pickle
 
 all_categories = ["Bottle","Box","Bucket","Camera","Cart","Clock","CoffeeMachine","Dishwasher","Dispenser","Display","Door","Eyeglasses","Faucet","FoldingChair","Globe","Keyboard","KitchenPot","Knife","Laptop","Lighter","Microwave","Mouse","Oven","Pen","Phone","Pliers","Printer","Remote","Safe","Scissors","Stapler","Switch","Toaster","Toilet","TrashCan","USB","WashingMachine","Window","Kettle","Lamp","Refrigerator","Suitcase", "StorageFurniture", "Table", "Chair"]
 
-print(len(all_categories))
-
 def weight_pred_preprocess(args,meta,category):
     part_names = meta[category]
     num_label = len(part_names)
