@@ -3,12 +3,13 @@
 
 [Hyunjin Kim](https://kormachine.github.io/), [Minhyuk Sung](https://mhsung.github.io/)
 
-[**arXiv**](https://arxiv.org/abs/2401.05906)
+[**Project**](https://partstad.github.io), [**arXiv**](https://arxiv.org/abs/2401.05906)
 
 
 
-<!-- # Updates
-- (2024.09.19) Released the code for PartSTAD including training and evaluation code. -->
+# Updates
+- (2024.11.07) Released checkpoints for all 45 categories.
+- (2024.09.19) Released the code for PartSTAD including training and evaluation code.
 
 # Introduction
 Official implementation of **PartSTAD: 2D-to-3D Part Segmentation Task Adaptation** (ECCV 2024).
@@ -129,6 +130,15 @@ python eval_script.py \
 
 # Citation
 If you find our work useful, please consider citing:
+```
+@inproceedings{kim2024partstad,
+    title={PartSTAD: 2D-to-3D Part Segmentation Task Adaptation}, 
+    author={Kim, Hyunjin and Sung, Minhyuk},
+    booktitle={ECCV},
+    year={2024}
+}
+```
+
 ```
 @article{kim2024partstad,
     title={PartSTAD: 2D-to-3D Part Segmentation Task Adaptation}, 
